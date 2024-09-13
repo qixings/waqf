@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ওয়াকফ বিলের আপত্তি ইমেল পাঠান</title>
+</head>
+<body style="    display: flex;
+flex-direction: column;
+align-items: center;
+background: linear-gradient(45deg, #0c1c20, #1f7820);
+color: white;
+background-repeat: no-repeat;
+height: 100vh; ">
+
+  <h2 style="    text-align: center;">ওয়াকফ (সংশোধনী) বিল, ২০২৪-এর বিষয়ে আপনার আপত্তি জমা দিন</h2>
+  <p style="    text-align: center;">আপনি এখানে আপনার নাম লিখুন এবং "ইমেল পাঠান" বোতামটি ক্লিক করুন। ইমেলটি স্বয়ংক্রিয়ভাবে সরকারকে পাঠানো হবে এবং আপনার নাম সহ ইমেলটির বিষয়বস্তু প্রি-ফিলড থাকবে।</p>
+  
+  <label for="name">আপনার নাম লিখুন:</label>
+  <input type="text" id="name" placeholder="এখানে আপনার নাম লিখুন" style="    width: 368px;
+  height: 47px;
+  border-radius: 8px; margin-bottom: 10px; border:none;" >
+  <button id="sendEmailButton" style="    padding: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  background: linear-gradient(2deg, #80ff00, #fbff03);
+  border: none;
+  border-radius: 15px;">ইমেল পাঠান</button>
+
+  <script>
+    document.getElementById('sendEmailButton').addEventListener('click', function() {
+      const name = document.getElementById('name').value;
+      
+      if (!name) {
+        alert("ইমেল পাঠানোর আগে আপনার নাম লিখুন।");
+        return;
+      }
+
+      // ইমেল এবং বিষয়বস্তু তৈরি
+      const email = "jpcwaqf-lss@sansad.nic.in";
+      const subject = "I Reject Waqf Amendment Bill 2024";
+      const body = `To, Joint Secretary(JM), Lok Sabha Secretariat, Room No.440, Parliament House Annexe, New Delhi-110001.
+
+Reg: I ${name} Reject Waqf Amendment Bill 2024.
+
+In response to the Public Notice regarding the Waqf (Amendment) Bill, 2024, please see here my representation.
+
+As a citizen of India, I am guaranteed by the Constitution of India the right to practice my religious faith and belief in Islam and Islamic Law.
+
+Regarding the proposed Waqf Amendment Bill 2024, as a responsible Muslim citizen of India, I have read and understood the new clauses from the official version available on the internet, the parliamentary discussions, and after deep thinking on the fundamentals of Waqf in Islam, I believe that all the new clauses are against the values and spirit of the Islamic System of Waqf.
+
+Therefore I strongly appeal and suggest to the Government of India NOT to adopt the Bill in any form of law.
+
+Yours sincerely, ${name}`;
+
+      // mailto লিঙ্ক তৈরি করুন
+      const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      // মেইল ক্লায়েন্ট খুলুন এবং ইমেল প্রি-ফিলড পাঠান
+      window.location.href = mailtoLink;
+    });
+  </script>
+
+</body>
+</html>
